@@ -1,4 +1,5 @@
 package com.svenko.cipher.model;
 
-public interface IEncript {
+public interface ISecretKey {
+
 }
