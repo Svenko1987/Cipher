@@ -7,12 +7,13 @@ public class AesDecrypt implements IDecrypt{
 
     public AesDecrypt(String password, String cipher) {
         this.password = password;
-        this.text = cipher;
+        this.cipher = cipher;
     }
 
     @Override
     public void decrypt() {
-    this.text=cipher.concat("+"+password);
+    this.text=cipher.concat(" desifrovano sa  sifrom "+password);
+
     }
 
 

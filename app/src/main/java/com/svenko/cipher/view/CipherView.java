@@ -20,7 +20,7 @@ public class CipherView implements ICipherView{
     }
 
     @Override
-    public void OnEncrypt(String encryption) {
+    public void OnEncrypt() {
         encryptController=new EncryptController(this);
         encryptController.onAction(passwordTV.getText().toString(),textTV.getText().toString());
         textTV.setText(encryptController.getEncryption());
@@ -28,7 +28,7 @@ public class CipherView implements ICipherView{
     }
 
     @Override
-    public void OnDecrypt(String decryption) {
+    public void OnDecrypt() {
         decryptController= new DecryptController(this);
 
         decryptController.onAction(passwordTV.getText().toString(),textTV.getText().toString());
@@ -38,7 +38,7 @@ public class CipherView implements ICipherView{
     }
 
     @Override
-    public void OnError(String errorMessage) {
+    public void OnError() {
 
     }
 }

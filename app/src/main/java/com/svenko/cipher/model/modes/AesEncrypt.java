@@ -19,6 +19,7 @@ public class AesEncrypt implements IEncrypt {
 
     @Override
     public void Encrypt() {
-    cipher=text.concat("+"+password);
+
+       this.cipher=text.concat(" sifrovano sa sifrom "+password);
     }
 }
