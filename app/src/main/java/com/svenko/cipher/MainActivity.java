@@ -3,14 +3,16 @@ package com.svenko.cipher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
 
+
 import com.svenko.cipher.view.CipherView;
-import com.svenko.cipher.view.ICipherView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,20 +30,10 @@ public class MainActivity extends AppCompatActivity {
         textTV=findViewById(R.id.messageTF);
 
 
-        CipherView cipherView =new CipherView(encryptBtn,decryptBtn,passwordTV,textTV);
+        CipherView cipherView =new CipherView(encryptBtn,decryptBtn,passwordTV,textTV,this);
 
-        encryptBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cipherView.OnEncrypt();
-            }
-        });
-        decryptBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cipherView.OnDecrypt();
-            }
-        });
+        encryptBtn.setOnClickListener(v -> cipherView.OnEncrypt());
+        decryptBtn.setOnClickListener(v -> cipherView.OnDecrypt());
 
 
     }
