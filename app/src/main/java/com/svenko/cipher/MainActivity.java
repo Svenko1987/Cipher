@@ -4,19 +4,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.svenko.cipher.controller.DecryptController;
+import com.svenko.cipher.controller.EncryptController;
+import com.svenko.cipher.view.ICipherView;
+
+public class MainActivity extends AppCompatActivity implements ICipherView {
+
+    Button encryptBtn, decryptBtn;
+    TextView passwordTV, textTV;
+    DecryptController decryptController;
+    EncryptController encryptController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        int prvi;
-        int drugi=15;
-        prvi=25;
-        int treci =prvi+drugi;
+        encryptBtn=findViewById(R.id.encryptBtn);
 
-        Log.d("Odgovor",String.valueOf(treci));
+
+    }
+
+    @Override
+    public void OnEncrypt(String encryption) {
+
+    }
+
+    @Override
+    public void OnDecrypt(String decryption) {
+
+    }
+
+    @Override
+    public void OnError(String errorMessage) {
 
     }
 }

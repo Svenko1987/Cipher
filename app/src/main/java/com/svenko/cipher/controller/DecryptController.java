@@ -1,10 +1,11 @@
 package com.svenko.cipher.controller;
 
-import com.svenko.cipher.model.AesEncrypt;
+import com.svenko.cipher.model.modes.AesDecrypt;
 import com.svenko.cipher.view.ICipherView;
 
 public class DecryptController implements ICipherController {
 
+    private String decryption;
     ICipherView iCipherView;
 
     public DecryptController(ICipherView iCipherView) {
@@ -12,10 +13,10 @@ public class DecryptController implements ICipherController {
     }
 
     @Override
-    public void OnEncryption(String password, String text) {
-        AesEncrypt aesEncrypt=new AesEncrypt(password,text);
-        aesEncrypt.Encrypt();
+    public void onAction(String password, String text) {
+        AesDecrypt aesDecrypt=new AesDecrypt(password,text);
+        aesDecrypt.decrypt();
 
-        iCipherView.OnEncrypt(aesEncrypt.getText());
+        this.decryption=aesDecrypt.getText();
     }
 }

@@ -1,4 +1,4 @@
-package com.svenko.cipher.model;
+package com.svenko.cipher.model.modes;
 
 public class AesEncrypt implements IEncrypt {
     private String password;
@@ -11,14 +11,11 @@ public class AesEncrypt implements IEncrypt {
     }
 
     @Override
-    public String getKey() {
-        return null;
+    public String getCipher() {
+        return this.cipher;
     }
 
-    @Override
-    public String getText() {
-        return null;
-    }
+
 
     @Override
     public void Encrypt() {

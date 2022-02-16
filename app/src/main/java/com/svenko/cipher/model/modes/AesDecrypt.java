@@ -1,6 +1,4 @@
-package com.svenko.cipher.model;
-
-import java.security.PrivateKey;
+package com.svenko.cipher.model.modes;
 
 public class AesDecrypt implements IDecrypt{
     private String password;
@@ -17,13 +15,9 @@ public class AesDecrypt implements IDecrypt{
     this.text=cipher.concat("+"+password);
     }
 
-    @Override
-    public String getKey() {
-        return null;
-    }
 
     @Override
-    public String getCipher() {
-        return null;
+    public String getText() {
+        return this.text;
     }
 }
