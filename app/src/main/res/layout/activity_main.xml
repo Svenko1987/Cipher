@@ -17,31 +17,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/encryptBtn" />
 
-    <EditText
-        android:id="@+id/textTV"
-        android:layout_width="0dp"
-        android:layout_height="162dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keyTF" />
-
     <Button
         android:id="@+id/decryptBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginEnd="8dp"
+        android:text="Decrypt"
         app:layout_constraintEnd_toStartOf="@+id/encryptBtn"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="98dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/encryptBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginStart="8dp"
+        android:text="Encrypt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/decryptBtn"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTV"
+        android:layout_width="260dp"
+        android:layout_height="211dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyTF" />
 </androidx.constraintlayout.widget.ConstraintLayout>

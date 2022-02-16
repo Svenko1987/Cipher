@@ -1,15 +1,16 @@
 package com.svenko.cipher.controller;
 
 import com.svenko.cipher.model.modes.AesEncrypt;
+import com.svenko.cipher.view.CipherView;
 import com.svenko.cipher.view.ICipherView;
 
 public class EncryptController implements ICipherController {
 
     private String encryption;
-    ICipherView iCipherView;
+    CipherView cipherView;
 
-    public EncryptController(ICipherView iCipherView) {
-        this.iCipherView = iCipherView;
+    public EncryptController(CipherView cipherView) {
+        this.cipherView = cipherView;
     }
 
     @Override
@@ -17,5 +18,9 @@ public class EncryptController implements ICipherController {
         AesEncrypt aesEncrypt=new AesEncrypt(password,text);
         aesEncrypt.Encrypt();
         this.encryption=aesEncrypt.getCipher();
+    }
+
+    public String getEncryption() {
+        return encryption;
     }
 }
