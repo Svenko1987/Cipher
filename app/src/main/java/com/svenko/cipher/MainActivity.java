@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import com.svenko.cipher.view.CipherView;
+import com.svenko.cipher.view.TextCipherView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         textTV=findViewById(R.id.messageTF);
 
 
-        CipherView cipherView =new CipherView(passwordTV,textTV,this);
+        TextCipherView textCipherView =new TextCipherView(passwordTV,textTV,this);
 
-        encryptBtn.setOnClickListener(v -> cipherView.OnEncrypt());
-        decryptBtn.setOnClickListener(v -> cipherView.OnDecrypt());
+        encryptBtn.setOnClickListener(v -> textCipherView.OnEncrypt());
+        decryptBtn.setOnClickListener(v -> textCipherView.OnDecrypt());
 
 
     }

@@ -1,12 +1,9 @@
 package com.svenko.cipher.model.modes;
 
 import android.util.Base64;
-
 import com.svenko.cipher.model.SecretKey;
-
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -47,7 +44,6 @@ public class AesEncrypt implements IEncrypt {
         }
         this.cipher= Base64.encodeToString(encVal, Base64.DEFAULT);
 
-        //this.cipher=text.concat(" sifrovano sa sifrom "+password);
     }
 
     private void extracted(NoSuchAlgorithmException e) {

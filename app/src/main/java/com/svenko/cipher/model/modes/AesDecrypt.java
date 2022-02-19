@@ -1,6 +1,5 @@
 package com.svenko.cipher.model.modes;
 
-import android.annotation.SuppressLint;
 import android.util.Base64;
 
 import com.svenko.cipher.model.SecretKey;

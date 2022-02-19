@@ -8,13 +8,13 @@ import android.widget.TextView;
 import com.svenko.cipher.controller.DecryptController;
 import com.svenko.cipher.controller.EncryptController;
 
-public class CipherView implements ICipherView {
+public class TextCipherView implements ICipherView {
     private TextView passwordTV, textTV;
     DecryptController decryptController;
     EncryptController encryptController;
     Context context;
 
-    public CipherView(TextView passwordTV, TextView textTV, Context context) {
+    public TextCipherView(TextView passwordTV, TextView textTV, Context context) {
         this.passwordTV = passwordTV;
         this.textTV = textTV;
         this.context = context;

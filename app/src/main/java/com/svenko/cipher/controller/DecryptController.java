@@ -3,18 +3,18 @@ package com.svenko.cipher.controller;
 import android.content.Context;
 import android.widget.Toast;
 import com.svenko.cipher.model.modes.AesDecrypt;
-import com.svenko.cipher.view.CipherView;
+import com.svenko.cipher.view.TextCipherView;
 
 
 public class DecryptController implements ICipherController {
 
 
     private String decryption;
-    CipherView cipherView;
+    TextCipherView textCipherView;
     Context context;
 
-    public DecryptController(CipherView cipherView, Context context) {
-        this.cipherView = cipherView;
+    public DecryptController(TextCipherView textCipherView, Context context) {
+        this.textCipherView = textCipherView;
         this.context = context;
     }
 

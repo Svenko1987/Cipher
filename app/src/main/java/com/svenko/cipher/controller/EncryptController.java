@@ -3,17 +3,17 @@ package com.svenko.cipher.controller;
 import android.content.Context;
 import android.widget.Toast;
 import com.svenko.cipher.model.modes.AesEncrypt;
-import com.svenko.cipher.view.CipherView;
+import com.svenko.cipher.view.TextCipherView;
 
 
 public class EncryptController implements ICipherController {
 
     private String encryption;
-    CipherView cipherView;
+    TextCipherView textCipherView;
     Context context;
 
-    public EncryptController(CipherView cipherView, Context context) {
-        this.cipherView = cipherView;
+    public EncryptController(TextCipherView textCipherView, Context context) {
+        this.textCipherView = textCipherView;
         this.context = context;
 
     }
