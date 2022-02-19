@@ -31,15 +31,4 @@ public class SecretKey {
         return secretKey;
     }
 
-    public void setSecretKey(SecretKeySpec secretKey) {
-        this.secretKey = secretKey;
-    }
-
-    public byte[] getKeyByte() {
-        return keyByte;
-    }
-
-    public void setKeyByte(byte[] keyByte) {
-        this.keyByte = keyByte;
-    }
 }
