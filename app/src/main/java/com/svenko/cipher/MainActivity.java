@@ -8,20 +8,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.svenko.cipher.view.TextCipherView;
 import com.svenko.cipher.view.TextToolsView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Button encryptBtn, decryptBtn, showHideBtn, clearBtn, copyBtn, pasteBtn, shareBtn;
+    Button encryptBtn, decryptBtn, showHideBtn, clearBtn, copyBtn, pasteBtn, shareBtn,switchBtn;
     TextView passwordTV, textTV;
+
+    ClipboardManager clipboardManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         encryptBtn=findViewById(R.id.encryptBtn);
@@ -31,13 +36,16 @@ public class MainActivity extends AppCompatActivity {
         copyBtn=findViewById(R.id.copyBTn);
         pasteBtn=findViewById(R.id.pasteBtn);
         shareBtn=findViewById(R.id.shareBtn);
+        switchBtn=findViewById(R.id.switchToImageBtn);
 
         passwordTV=findViewById(R.id.keyTF);
         textTV=findViewById(R.id.messageTF);
 
+        clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+
 
         TextCipherView textCipherView =new TextCipherView(passwordTV,textTV,this);
-        TextToolsView textToolsView = new TextToolsView(passwordTV,textTV,this);
+        TextToolsView textToolsView = new TextToolsView(passwordTV,textTV,this, clipboardManager);
 
         encryptBtn.setOnClickListener(v -> textCipherView.OnEncrypt());
         decryptBtn.setOnClickListener(v -> textCipherView.OnDecrypt());
@@ -45,7 +53,21 @@ public class MainActivity extends AppCompatActivity {
         clearBtn.setOnClickListener(v -> textToolsView.clearData());
         copyBtn.setOnClickListener(v -> textToolsView.copyDataToClipboard());
         pasteBtn.setOnClickListener(v -> textToolsView.pasteDataFromClipboard());
-        shareBtn.setOnClickListener(v -> startActivity(Intent.createChooser(textToolsView.shareData(), "Share using")));
+        shareBtn.setOnClickListener(v -> {
+            if (textTV.getText().toString().equals("")) {
+                Toast.makeText(getApplicationContext(), "Cipher field is empty", Toast.LENGTH_SHORT).show();
+            } else {
+            startActivity(Intent.createChooser(textToolsView.shareData(), "Share using"));
+        }});
+        switchBtn.setOnClickListener(v -> {
+
+            try {
+                Intent intent=new Intent(getApplicationContext(), ImageEncryptionActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
 
 

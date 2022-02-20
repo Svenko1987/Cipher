@@ -55,6 +55,7 @@
 
     <Button
         android:id="@+id/showHideBtn"
+        android:contentDescription="hide"
         android:layout_width="61dp"
         android:layout_height="0dp"
         android:layout_marginEnd="44dp"
@@ -66,6 +67,7 @@
 
     <Button
         android:id="@+id/clearBtn"
+        android:contentDescription="clear"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -73,10 +75,11 @@
         app:iconPadding="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textEncDecLb" />
 
     <Button
         android:id="@+id/copyBTn"
+        android:contentDescription="copy"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,16 +90,19 @@
 
     <Button
         android:id="@+id/pasteBtn"
+        android:contentDescription="paste"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:icon="?attr/actionModePasteDrawable"
-        app:layout_constraintTop_toBottomOf="@+id/messageTF"
-        tools:layout_editor_absoluteX="167dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messageTF" />
 
     <Button
         android:id="@+id/shareBtn"
+        android:contentDescription="share"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -104,5 +110,29 @@
         app:icon="?attr/actionModeShareDrawable"
         app:layout_constraintBaseline_toBaselineOf="@+id/pasteBtn"
         app:layout_constraintStart_toEndOf="@+id/pasteBtn" />
+
+    <Button
+        android:id="@+id/switchToImageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image Encryption"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pasteBtn"
+        app:layout_constraintVertical_bias="0.29000002" />
+
+    <TextView
+        android:id="@+id/textEncDecLb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Text encryption/decryption"
+        android:textSize="24sp"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Deprecated" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
