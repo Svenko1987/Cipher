@@ -1,33 +1,33 @@
 package com.svenko.cipher.view;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.text.method.PasswordTransformationMethod;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.svenko.cipher.R;
 
-public class TextToolsView implements IToolsView{
+public class TextToolsView implements IToolsView {
     private TextView passwordTV, textTV;
-    Button btn;
+
     Context context;
 
-    public TextToolsView(TextView passwordTV, TextView textTV, Context context, Button showHideBtn) {
+
+    public TextToolsView(TextView passwordTV, TextView textTV, Context context) {
         this.passwordTV = passwordTV;
         this.textTV = textTV;
         this.context = context;
-        this.btn.findViewById(R.id.encryptBtn);
-        this.btn.setOnClickListener(v -> showHidePassword());
+
     }
-    void onClick(){
-        this.btn.setOnClickListener(v -> showHidePassword());
-    }
+
 
     @Override
     public void showHidePassword() {
-        if(!this.passwordTV.getTransformationMethod().equals(null)){
+        if (this.passwordTV.getTransformationMethod() != null) {
             this.passwordTV.setTransformationMethod(null);
-        } else{
+        } else {
             this.passwordTV.setTransformationMethod(new PasswordTransformationMethod());
         }
     }
@@ -35,6 +35,9 @@ public class TextToolsView implements IToolsView{
 
     @Override
     public void copyDataToClipboard() {
+
+        ClipData clipData = ClipData.newPlainText("text", this.textTV.getText().toString());
+
 
     }
 
@@ -44,12 +47,27 @@ public class TextToolsView implements IToolsView{
     }
 
     @Override
-    public void shareData() {
+    public Intent shareData() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        if (textTV.getText().toString().equals("")) {
+            Toast.makeText(context, "Cipher field is empty", Toast.LENGTH_SHORT).show();
+        } else {
+
+            String shareBody = textTV.getText().toString();
+            intent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+
+        }
+
+        return intent;
 
     }
 
     @Override
     public void clearData() {
+        this.passwordTV.setText("");
+        this.textTV.setText("");
 
     }
 }
