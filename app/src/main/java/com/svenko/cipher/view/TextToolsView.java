@@ -20,8 +20,7 @@ public class TextToolsView implements IToolsView {
         this.passwordTV = passwordTV;
         this.textTV = textTV;
         this.context = context;
-        this.clipboardManager=clipboardManager;
-
+        this.clipboardManager = clipboardManager;
 
 
     }
@@ -39,13 +38,24 @@ public class TextToolsView implements IToolsView {
 
     @Override
     public void copyDataToClipboard() {
-
+        if (textTV.getText().equals(null)) {
+            Toast.makeText(context, "No text to copy", Toast.LENGTH_SHORT).show();
+        } else {
+            clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("text", textTV.getText().toString());
+            clipboardManager.setPrimaryClip(clipData);
+            Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
 
     @Override
     public void pasteDataFromClipboard() {
+        ClipData clipData = clipboardManager.getPrimaryClip();
+        ClipData.Item item = clipData.getItemAt(0);
+        textTV.setText(item.getText().toString());
+        Toast.makeText(context, "Pasted", Toast.LENGTH_SHORT).show();
 
 
     }

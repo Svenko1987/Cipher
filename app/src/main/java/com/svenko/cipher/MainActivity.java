@@ -53,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         clearBtn.setOnClickListener(v -> textToolsView.clearData());
         copyBtn.setOnClickListener(v -> textToolsView.copyDataToClipboard());
         pasteBtn.setOnClickListener(v -> textToolsView.pasteDataFromClipboard());
+
+
         shareBtn.setOnClickListener(v -> {
             if (textTV.getText().toString().equals("")) {
-                Toast.makeText(getApplicationContext(), "Cipher field is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Text field is empty", Toast.LENGTH_SHORT).show();
             } else {
             startActivity(Intent.createChooser(textToolsView.shareData(), "Share using"));
         }});
