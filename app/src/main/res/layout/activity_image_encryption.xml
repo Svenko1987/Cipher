@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/encryptBtn2"
-        android:layout_width="103dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Encrypt"
         app:layout_constraintBaseline_toBaselineOf="@+id/decryptBtn2"
@@ -18,24 +18,24 @@
     <Button
         android:id="@+id/decryptBtn2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:text="Decrypt"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/encryptBtn2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/pasteBtn2" />
 
     <Button
         android:id="@+id/pasteBtn2"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:contentDescription="paste"
+        android:layout_marginTop="32dp"
         app:icon="?attr/actionModePasteDrawable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decryptBtn2" />
+        app:layout_constraintTop_toBottomOf="@+id/cameraBtn" />
 
     <Button
         android:id="@+id/shareBtn2"
@@ -64,6 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:src="@drawable/Sample"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -74,8 +75,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Text Encryption"
+        android:layout_marginTop="32dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/cameraBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="32dp"
+        android:text="camera"
+        app:layout_constraintEnd_toStartOf="@+id/galeryBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/galeryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="galery"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cameraBtn"
+        tools:layout_editor_absoluteX="211dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
