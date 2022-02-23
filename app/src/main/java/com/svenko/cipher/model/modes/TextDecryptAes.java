@@ -13,13 +13,13 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-public class AesDecrypt implements IDecrypt {
+public class TextDecryptAes implements IDecrypt <String> {
     private String key;
     private String text;
     private String data;
     SecretKey secretKey;
 
-    public AesDecrypt(String key, String data) {
+    public TextDecryptAes(String key, String data) {
         this.key = key;
         this.data = data;
     }
@@ -44,7 +44,7 @@ public class AesDecrypt implements IDecrypt {
 
 
     @Override
-    public String getText() {
+    public String getData() {
         return this.text;
     }
 }

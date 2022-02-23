@@ -5,13 +5,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 
-import com.svenko.cipher.controller.DecryptController;
-import com.svenko.cipher.controller.EncryptController;
+import com.svenko.cipher.controller.TextDecryptController;
+import com.svenko.cipher.controller.TextEncryptController;
 
 public class TextCipherView implements ICipherView {
     private TextView passwordTV, textTV;
-    DecryptController decryptController;
-    EncryptController encryptController;
+    TextDecryptController textDecryptController;
+    TextEncryptController textEncryptController;
     Context context;
 
     public TextCipherView(TextView passwordTV, TextView textTV, Context context) {
@@ -23,21 +23,21 @@ public class TextCipherView implements ICipherView {
 
     @Override
     public void OnEncrypt() {
-        encryptController = new EncryptController(this, this.context);
-        encryptController.onAction(passwordTV.getText().toString(), textTV.getText().toString());
+        textEncryptController = new TextEncryptController(this, this.context);
+        textEncryptController.onAction(passwordTV.getText().toString(), textTV.getText().toString());
         passwordTV.onEditorAction(EditorInfo.IME_ACTION_DONE);
         textTV.onEditorAction(EditorInfo.IME_ACTION_DONE);
-        textTV.setText(encryptController.getEncryption());
+        textTV.setText(textEncryptController.getEncryption());
 
     }
 
     @Override
     public void OnDecrypt() {
-        decryptController = new DecryptController(this, this.context);
-        decryptController.onAction(passwordTV.getText().toString(), textTV.getText().toString());
+        textDecryptController = new TextDecryptController(this, this.context);
+        textDecryptController.onAction(passwordTV.getText().toString(), textTV.getText().toString());
         passwordTV.onEditorAction(EditorInfo.IME_ACTION_DONE);
         textTV.onEditorAction(EditorInfo.IME_ACTION_DONE);
-        textTV.setText(decryptController.getDecryption());
+        textTV.setText(textDecryptController.getDecryption());
     }
 
     @Override

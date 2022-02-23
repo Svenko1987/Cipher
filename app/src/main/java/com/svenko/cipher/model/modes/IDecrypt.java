@@ -1,8 +1,8 @@
 package com.svenko.cipher.model.modes;
 
-public interface IDecrypt {
+public interface IDecrypt <T>{
 
-    String getText();
+    T getData();
     void decrypt();
 
 

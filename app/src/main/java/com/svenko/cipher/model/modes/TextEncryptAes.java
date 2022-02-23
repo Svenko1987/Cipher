@@ -10,13 +10,13 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-public class AesEncrypt implements IEncrypt {
+public class TextEncryptAes implements IEncrypt <String>{
     private String password;
     private String text;
     private String cipher;
     SecretKey secretKey;
 
-    public AesEncrypt(String password, String text) {
+    public TextEncryptAes(String password, String text) {
         this.password = password;
         this.text = text;
     }
@@ -43,6 +43,7 @@ public class AesEncrypt implements IEncrypt {
             e.printStackTrace();
         }
         this.cipher= Base64.encodeToString(encVal, Base64.DEFAULT);
+
 
     }
 

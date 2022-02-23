@@ -2,17 +2,17 @@ package com.svenko.cipher.controller;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.svenko.cipher.model.modes.AesEncrypt;
+import com.svenko.cipher.model.modes.TextEncryptAes;
 import com.svenko.cipher.view.TextCipherView;
 
 
-public class EncryptController implements ICipherController {
+public class TextEncryptController implements ICipherController<String> {
 
     private String encryption;
-    TextCipherView textCipherView;
-    Context context;
+    private TextCipherView textCipherView;
+    private Context context;
 
-    public EncryptController(TextCipherView textCipherView, Context context) {
+    public TextEncryptController(TextCipherView textCipherView, Context context) {
         this.textCipherView = textCipherView;
         this.context = context;
 
@@ -21,14 +21,14 @@ public class EncryptController implements ICipherController {
 
     @Override
     public void onAction(String password, String text) {
-        AesEncrypt aesEncrypt = new AesEncrypt(password, text);
-        aesEncrypt.Encrypt();
+        TextEncryptAes textEncryptAes = new TextEncryptAes(password, text);
+        textEncryptAes.Encrypt();
         if (password.equals(""))
             Toast.makeText(context, "Enter Password", Toast.LENGTH_SHORT).show();
         else if (text.equals(""))
             Toast.makeText(context, "Enter Message", Toast.LENGTH_SHORT).show();
         else
-            this.encryption = aesEncrypt.getCipher();
+            this.encryption = textEncryptAes.getCipher();
     }
 
     public String getEncryption() {

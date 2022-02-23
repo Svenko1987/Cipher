@@ -1,7 +1,7 @@
 package com.svenko.cipher.model.modes;
 
-public interface IEncrypt {
+public interface IEncrypt <T> {
 
-    String getCipher();
+    T getCipher();
     void Encrypt();
 }
