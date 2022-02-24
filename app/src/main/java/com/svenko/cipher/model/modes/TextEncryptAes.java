@@ -45,6 +45,7 @@ public class TextEncryptAes implements IEncrypt <String>{
         this.cipher= Base64.encodeToString(encVal, Base64.DEFAULT);
 
 
+
     }
 
     private void extracted(NoSuchAlgorithmException e) {
