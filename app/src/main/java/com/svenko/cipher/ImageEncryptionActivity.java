@@ -16,10 +16,11 @@ import android.provider.MediaStore;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.svenko.cipher.view.ImageCipherView;
 
 public class ImageEncryptionActivity extends AppCompatActivity {
-    ImageView imageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,13 @@ public class ImageEncryptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_encryption);
 
         Button switchBtn=findViewById(R.id.textBtn);
+        Button encryptBtn=findViewById(R.id.encryptBtn2);
 
-        imageView=(ImageView)findViewById(R.id.imageIV);
+        TextView passwordTV= (TextView) findViewById(R.id.keyTF2);
+        ImageView imageView=(ImageView)findViewById(R.id.imageIV);
 
         Button cameraBtn=findViewById(R.id.cameraBtn);
+        ImageCipherView imageCipherView=new ImageCipherView(passwordTV,imageView);
 
         switchBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -44,6 +48,9 @@ public class ImageEncryptionActivity extends AppCompatActivity {
             Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent,100);
         });
+        //encryptBtn.setOnClickListener(view -> {
+         //   imageCipherView.OnEncrypt();
+      //  });
     }
 
     @SuppressLint("MissingSuperCall")
@@ -54,7 +61,10 @@ public class ImageEncryptionActivity extends AppCompatActivity {
         if (requestCode == 100) {
             Bitmap capturedImage = (Bitmap) data.getExtras().get("data");
 
+            ImageView imageView=findViewById(R.id.imageIV);
             imageView.setImageBitmap(capturedImage);
         }
     }
+
+
 }

@@ -19,10 +19,10 @@ public class ImageCipherView implements ICipherView{
     ImageEncryptionController imageEncryptionController;
     ImageDecryptController imageDecryptController;
 
-    public ImageCipherView(TextView passwordTV, ImageView imageIV, Context context) {
+    public ImageCipherView(TextView passwordTV, ImageView imageIV) {
         this.passwordTV = passwordTV;
         this.imageIV = imageIV;
-        this.context = context;
+        //this.context = context;
         CreateBitmap();
 
     }
@@ -35,7 +35,10 @@ public class ImageCipherView implements ICipherView{
     @Override
     public void OnEncrypt() {
 
-        imageEncryptionController= new ImageEncryptionController(bitmap,this,context);
+        imageEncryptionController= new ImageEncryptionController(bitmap);
+        imageEncryptionController.onAction(passwordTV.getText().toString(),bitmap);
+        this.bitmap=imageEncryptionController.getBitmap();
+        imageIV.setImageBitmap(this.bitmap);
 
     }
 
