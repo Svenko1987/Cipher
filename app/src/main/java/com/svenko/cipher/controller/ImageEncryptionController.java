@@ -23,7 +23,7 @@ public class ImageEncryptionController implements ICipherController<Bitmap>{
 
     @Override
     public void onAction(String password, Bitmap bitmap) {
-        ImageEncryptAes encryptAes= new ImageEncryptAes(password,bitmap);
+        ImageEncryptAes encryptAes= new ImageEncryptAes(password,bitmap, this.context);
         encryptAes.Encrypt();
       //  if (password.equals(""))
          //   Toast.makeText(context, "Enter Password", Toast.LENGTH_SHORT).show();
