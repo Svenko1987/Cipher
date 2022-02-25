@@ -1,8 +1,12 @@
 package com.svenko.cipher.model.modes;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 
 import com.svenko.cipher.model.SecretKey;
 
@@ -21,11 +25,28 @@ public class ImageEncryptAes implements IEncrypt<Bitmap>{
     private String password;
     private Bitmap data;
     private Bitmap cipher;
+    private String string;
+    private byte[] imageBytes;
     SecretKey secretKey;
 
     public ImageEncryptAes(String password, Bitmap data) {
         this.password = password;
         this.data = data;
+    }
+
+    public void ImageToString(){
+        ByteArrayOutputStream bas=new  ByteArrayOutputStream();
+        data.compress(Bitmap.CompressFormat.PNG,100, bas);
+        byte [] b=bas.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        Log.d(TAG, "ImageToString: "+temp);
+        this.string=temp;
+
+    }
+    public  void StringToImage(){
+
+
+
     }
 
 
@@ -35,8 +56,11 @@ public class ImageEncryptAes implements IEncrypt<Bitmap>{
     }
 
     @Override
+
+
     public void Encrypt() {
-        ByteArrayOutputStream stream= new ByteArrayOutputStream();
+        ImageToString();
+/*        ByteArrayOutputStream stream= new ByteArrayOutputStream();
         data.compress(Bitmap.CompressFormat.JPEG,100,stream);
         byte[] bytes= stream.toByteArray();
         this.secretKey = new SecretKey(password);
@@ -51,7 +75,8 @@ public class ImageEncryptAes implements IEncrypt<Bitmap>{
         }
         String imageEncoded = Base64.encodeToString(encVal, Base64.DEFAULT);
         byte[] decodedByte = Base64.decode(imageEncoded, 0);
-        this.cipher= BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+
+        this.cipher= BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);*/
 
     }
 }

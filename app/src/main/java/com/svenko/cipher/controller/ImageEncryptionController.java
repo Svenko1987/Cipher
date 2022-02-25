@@ -30,6 +30,7 @@ public class ImageEncryptionController implements ICipherController<Bitmap>{
        // else if (bitmap.equals(""))
          //   Toast.makeText(context, "Get Picture", Toast.LENGTH_SHORT).show();
        // else
+        
         this.bitmap=encryptAes.getCipher();
 
     }
