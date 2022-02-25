@@ -21,7 +21,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 
-public class ImageEncryptAes implements IEncrypt<Bitmap>{
+public class ImageEncryptAes implements IEncrypt<Bitmap> {
     private String password;
     private Bitmap data;
     private Bitmap cipher;
@@ -38,15 +38,24 @@ public class ImageEncryptAes implements IEncrypt<Bitmap>{
         ByteArrayOutputStream bas=new  ByteArrayOutputStream();
         data.compress(Bitmap.CompressFormat.PNG,100, bas);
         byte [] b=bas.toByteArray();
+
         String temp = Base64.encodeToString(b, Base64.DEFAULT);
-        Log.d(TAG, "ImageToString: "+temp);
-        this.string=temp;
+        Log.d(TAG, "ImageToString: " + temp);
+        this.string = temp;
 
     }
-    public  void StringToImage(){
+
+    public void StringToImage() {
+        try {
+            byte[] encodeByte = Base64.decode(this.string, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            this.cipher = bitmap;
+            Log.d(TAG, "StringToImage: String je dekodiran u sliku");
+        } catch (Exception e) {
+            e.getMessage();
 
 
-
+        }
     }
 
 
@@ -60,6 +69,22 @@ public class ImageEncryptAes implements IEncrypt<Bitmap>{
 
     public void Encrypt() {
         ImageToString();
+
+
+        this.secretKey = new SecretKey(password);
+        SecretKeySpec keySpec = secretKey.getSecretKey();
+        byte[] encVal = new byte[0];
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+            encVal = cipher.doFinal(this.string.getBytes());
+        } catch (NoSuchPaddingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        this.string= Base64.encodeToString(encVal, Base64.DEFAULT);
+        StringToImage();
 /*        ByteArrayOutputStream stream= new ByteArrayOutputStream();
         data.compress(Bitmap.CompressFormat.JPEG,100,stream);
         byte[] bytes= stream.toByteArray();
