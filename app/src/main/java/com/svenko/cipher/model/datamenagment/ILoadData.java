@@ -1,6 +1,9 @@
 package com.svenko.cipher.model.datamenagment;
 
+import java.io.File;
+import java.io.IOException;
+
 public interface ILoadData <T>{
-    void normalizeData();
-    void loadData();
+    T normalizeData(File file) throws IOException;
+    T loadData();
 }

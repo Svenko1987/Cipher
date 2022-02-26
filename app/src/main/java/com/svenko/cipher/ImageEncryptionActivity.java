@@ -1,6 +1,7 @@
 package com.svenko.cipher;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -11,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
@@ -23,6 +25,7 @@ import com.svenko.cipher.view.ImageCipherView;
 
 public class ImageEncryptionActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +33,11 @@ public class ImageEncryptionActivity extends AppCompatActivity {
 
         Button switchBtn = findViewById(R.id.textBtn);
         Button encryptBtn = findViewById(R.id.encryptBtn2);
+        Button decryptBtn = findViewById(R.id.decryptBtn2);
 
         TextView passwordTV = (TextView) findViewById(R.id.keyTF2);
         ImageView imageView = (ImageView) findViewById(R.id.imageIV);
-        ImageCipherView imageCipherView = new ImageCipherView(passwordTV, imageView);
+        ImageCipherView imageCipherView = new ImageCipherView(passwordTV, imageView, ImageEncryptionActivity.this);
 
         Button cameraBtn = findViewById(R.id.cameraBtn);
 
@@ -58,8 +62,9 @@ public class ImageEncryptionActivity extends AppCompatActivity {
                 imageCipherView.createBitmap(imageView);
                 imageCipherView.OnEncrypt();
             }
-
-
+        });
+        decryptBtn.setOnClickListener(view -> {
+            imageCipherView.OnDecrypt();
         });
     }
 
