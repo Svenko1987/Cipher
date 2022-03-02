@@ -32,10 +32,10 @@ public class SaveBytes implements ISaveData<byte[]>{
 
         FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream= context.openFileOutput("temp.cph",Context.MODE_PRIVATE);
+            fileOutputStream= context.openFileOutput("test.cph",Context.MODE_PRIVATE);
             fileOutputStream.write(bytes);
             Log.d(TAG, "saveData: Saved to memory "+context.getFilesDir());
-            this.path=context.getFilesDir()+"/"+"temp.chp";
+            this.path=context.getFilesDir()+"/"+"test.chp";
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

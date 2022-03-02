@@ -35,8 +35,8 @@ public class ImageEncryptionActivity extends AppCompatActivity {
         Button encryptBtn = findViewById(R.id.encryptBtn2);
         Button decryptBtn = findViewById(R.id.decryptBtn2);
 
-        TextView passwordTV = (TextView) findViewById(R.id.keyTF2);
-        ImageView imageView = (ImageView) findViewById(R.id.imageIV);
+        TextView passwordTV = findViewById(R.id.keyTF2);
+        ImageView imageView =findViewById(R.id.imageIV);
         ImageCipherView imageCipherView = new ImageCipherView(passwordTV, imageView, ImageEncryptionActivity.this);
 
         Button cameraBtn = findViewById(R.id.cameraBtn);
@@ -59,6 +59,8 @@ public class ImageEncryptionActivity extends AppCompatActivity {
             if (imageView.getDrawable() == null){
                 Toast.makeText(ImageEncryptionActivity.this, "No image", Toast.LENGTH_SHORT).show();
             }else{
+
+
                 imageCipherView.createBitmap(imageView);
                 imageCipherView.OnEncrypt();
             }

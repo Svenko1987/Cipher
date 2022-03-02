@@ -48,9 +48,9 @@ public class ImageCipherView implements ICipherView{
         imageEncryptionController.onAction(passwordTV.getText().toString(),this.bitmap);
         Log.d(TAG, "OnEncrypt: Slika je  encriptovana");
         this.bitmap=imageEncryptionController.getBitmap();
-        Log.d(TAG, "OnEncrypt: Slika je postavljena u bitmap");
+/*        Log.d(TAG, "OnEncrypt: Slika je postavljena u bitmap");
         imageIV.setImageBitmap(this.bitmap);
-        Log.d(TAG, "OnEncrypt: slika stavita na view");
+        Log.d(TAG, "OnEncrypt: slika stavita na view");*/
 
     }
 
